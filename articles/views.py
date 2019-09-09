@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Articles
+from .models import Article
 
 # Create your views here.
 def main(request):
@@ -8,7 +8,7 @@ def main(request):
 
 
 def index(request):
-    articles = Articles.objects.all()
+    articles = Article.objects.all()
     context = {
         'articles': articles
     }
@@ -23,14 +23,14 @@ def new(request):
 def create(request):
     title = request.GET.get('title')
     content = request.GET.get('content')
-    articles = Articles(title=title, content=content)
+    articles = Article(title=title, content=content)
     articles.save()
 
     return redirect('/articles/')
 
 
 def detail(request, article_pk):
-    article = Articles.objects.get(pk=article_pk)
+    article = Article.objects.get(pk=article_pk)
     context = {
         'pk': article.pk,
         'title': article.title,
@@ -43,14 +43,14 @@ def detail(request, article_pk):
 
 
 def delete(request, article_pk):
-    article = Articles.objects.get(pk=article_pk)
+    article = Article.objects.get(pk=article_pk)
     article.delete()
 
     return redirect('/articles/')
 
 
 def update(request, article_pk):
-    article = Articles.objects.get(pk=article_pk)
+    article = Article.objects.get(pk=article_pk)
     context = {
         'pk': article.pk,
         'title': article.title,
@@ -61,7 +61,7 @@ def update(request, article_pk):
 
 
 def updated(request, article_pk):
-    article = Articles.objects.get(pk=article_pk)
+    article = Article.objects.get(pk=article_pk)
     article.title = request.GET.get('title')
     article.content = request.GET.get('content')
     article.save()
