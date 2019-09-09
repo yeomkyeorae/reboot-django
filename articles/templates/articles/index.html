@@ -1,12 +1,25 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>안녕!</h1>
-</body>
-</html>
+{% extends 'articles/base.html' %}
+
+{% block body%}
+<h1>게시판</h1>
+<a href="new/"><button class="btn btn-success">글 작성하기</button></a>
+<a href="/"><button class="btn btn-warning">아이유 사진보기</button></a>
+<table class="table table-primary">
+    <thead class="thead">
+        <tr class="bg-primary">
+            <th scope="col">번호</th>
+            <th scope="col">제목</th>
+            <th scope="col">작성 일자</th>
+        </tr>
+    </thead>
+    <tbody class="mt-5">
+        {% for article in articles %}
+        <tr>
+            <th scope="row">{{article.id}}</th>
+            <td scope="row"><a href="/articles/{{article.pk}}">{{article.title}}</a></td>
+            <td scope="">{{ article.created_at }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
