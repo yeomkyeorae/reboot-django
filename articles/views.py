@@ -66,4 +66,4 @@ def updated(request, article_pk):
     article.content = request.GET.get('content')
     article.save()
 
-    return render(request, 'articles/updated.html')
+    return redirect(f'/articles/{article_pk}/')
