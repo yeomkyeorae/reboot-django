@@ -1,9 +1,9 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Articles
+from .models import Article
 
-class ArticlesAdmin(admin.ModelAdmin):
+class ArticleAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'content', 'created_at', 'updated_at')
 
-admin.site.register(Articles, ArticlesAdmin)
+admin.site.register(Article, ArticleAdmin)
