@@ -1,0 +1,8 @@
+{% extends 'jobs/base.html' %}
+{% block body %}
+    <img src="{{ image_url }}" alt="" style="width:300px; height:400px">
+    <p class="animated infinite bounce delay-2s" style="font-size:50px">{{ name }}님의 전생은 <span style="color:red; font-size:50px">{{ job }}</span>이었습니다.</p>
+    <a href="{% url 'jobs:index' %}">
+        <button class="btn btn-info">돌아가기</button>
+    </a>
+{% endblock %}

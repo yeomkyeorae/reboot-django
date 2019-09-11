@@ -1,0 +1,12 @@
+{% extends 'jobs/base.html' %}
+{% block body %}
+<div class="container">
+    <img src="http://www.kbsn.co.kr/m/images/upload/program/20190312/201903122480685-02_Program_home_640x690_M.png" alt=""><br>
+    <form action="{% url 'jobs:former-life' %}" method="POST">
+        {% csrf_token %}
+        <label for="name" style="font-size:30px">당신의 이름을 입력하세요</label>
+        <input type="text" id="name" name="name" style="width:272px">
+        <button class="btn btn-danger">무당에게 전송</button>
+    </form>
+</div>
+{% endblock %}
