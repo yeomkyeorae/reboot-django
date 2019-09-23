@@ -21,9 +21,10 @@ def new(request):
 
 
 def create(request):
-    title = request.GET.get('title')
-    content = request.GET.get('content')
+    title = request.POST.get('title')
+    content = request.POST.get('content')
     articles = Article(title=title, content=content)
+    articles.image = request.FILES.get('image')
     articles.save()
 
     return redirect('/articles/')
@@ -37,6 +38,7 @@ def detail(request, article_pk):
         'content': article.content,
         'created_at': article.created_at,
         'updated_at': article.updated_at,
+        'image': article.image,
     }
 
     return render(request, 'articles/detail.html', context)

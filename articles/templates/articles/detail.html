@@ -5,6 +5,7 @@
   <div class="card-body">
     <h6 class="card-title">만든 날짜 : {{ created_at }}<hr></h6>
     <h6 class="card-title">수정 날짜 : {{ updated_at }}<hr></h6>
+    <img src="{{ image.url }}" alt="{{ article.image.name }}" style="width: 50%">
     <p class="card-text"><pre>{{ content }}</pre></p>
     <a href="/articles/{{ pk }}/update/" class="btn btn-primary">수정하기</a>
     <a href="/articles/{{ pk }}/delete/" class="btn btn-danger">삭제하기</a>

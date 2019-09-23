@@ -1,6 +1,7 @@
 {% extends 'articles/base.html' %}
 {% block body %}
-    <form action="/articles/create/">
+    <form action="/articles/create/" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
         <div class="form-group">
             <label for="title">제목</label><br>
             <input type="text" name="title" id="title" size="50"><br>
@@ -8,6 +9,8 @@
         <div class="form-group">
             <label for="content">내용</label><br>
             <textarea class="form-group" name="content" id="content" cols="52" rows="10"></textarea><br>
+            <label for="image">이미지</label><br>
+            <input type="file" name="image" id="image">
             <button class="btn btn-success">작성 완료</button>
             <a href="/articles/" class="btn btn-danger">취소</a>
         </div>
